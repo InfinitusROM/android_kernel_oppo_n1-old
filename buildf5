@@ -14,13 +14,13 @@ export DEFCONFIG=cyanogenmod_x909_defconfig
 echo "Setting Date And Time For Zip File"
 export NOW=$(date +"%m-%d-%y_%H:%M")
 echo "Setting Toolchain"
-export GCC=AK-linaro
+export GCC=linaro-arm-eabi-4.10
 echo "Setting Toolchain Version"
 export VER=4.9.1-2014.06.20140614.CR83
 echo "Setting Toolchain Location"
-export TOOLCHAIN=`pwd`/../$GCC/$VER/bin/arm-eabi-
+export TOOLCHAIN=`pwd`/../$GCC/bin/arm-eabi-
 echo "Setting Toolchain Strip Location"
-export TSTRIP=`pwd`/../$GCC-$VER/bin/arm-linux-androideabi-strip
+export TSTRIP=`pwd`/../$GCC/bin/arm-linux-androideabi-strip
 echo "Setting Strip Arguments"
 export STRIP=--strip-unneeded
 echo "Setting CPU Cores/Threads"
@@ -83,7 +83,7 @@ sleep 1
 #find '../' -name "wlan.ko" -exec cp -av {} system/lib/modules/ \;
 #sleep 1
 echo "Compiling Infinitus-Dev-Kernel-V1.0-"$NOW".zip"
-zip -r Infinitus-Dev-Kernel-Find5-V1.0-"$NOW".zip kernel/ META-INF/
+zip -r Infinitus-Dev-Kernel-Find5-V1.0-"$NOW".zip kernel/ META-INF/ system/
 sleep 1
 echo "Signing Zip"
 java -classpath testsign.jar testsign Infinitus-Dev-Kernel-Find5-V1.0-"$NOW".zip Infinitus-Dev-Kernel-Find5-V1.0-"$NOW"-Signed.zip
